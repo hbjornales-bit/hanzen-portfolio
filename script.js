@@ -56,8 +56,7 @@ const slides = [
 
 const hero = document.getElementById("hero");
 
-const heroImage = document.getElementById("hero-image");
-const heroVideo = document.getElementById("hero-video");
+const stage = document.getElementById("coverflow-stage");
 
 const heroTitle = document.getElementById("hero-title");
 const heroDescription = document.getElementById("hero-description");
@@ -75,80 +74,124 @@ const previousButton = document.getElementById("previous");
 let currentSlide = 0;
 
 let autoplayTimer;
-let transitionTimer;
 
 const autoplayDelay = 6000;
 
+const cards = [];
+
 
 // =================================
-// DISPLAY SLIDE
+// CREATE CAROUSEL CARDS
 // =================================
 
-function showSlide(index, animate = true) {
+slides.forEach(function(slide, index) {
 
-    const slide = slides[index];
+    const card = document.createElement("div");
 
-    clearTimeout(transitionTimer);
+    card.classList.add("coverflow-card");
 
-    if (animate) {
-        hero.classList.add("is-changing");
+    card.dataset.index = index;
+
+    let media;
+
+    if (slide.type === "photo") {
+
+        media = document.createElement("img");
+
+        media.src = slide.file;
+        media.alt = slide.title;
+
+    } else {
+
+        media = document.createElement("video");
+
+        media.src = slide.file;
+        media.muted = true;
+        media.loop = true;
+        media.playsInline = true;
+        media.preload = "auto";
+
     }
 
-    transitionTimer = setTimeout(function() {
+    card.appendChild(media);
 
-        // Stop previous video
+    stage.appendChild(card);
 
-        heroVideo.pause();
-        heroVideo.removeAttribute("src");
-        heroVideo.load();
+    cards.push({
+        element: card,
+        media: media,
+        slide: slide
+    });
 
-        // Display photo
+});
 
-        if (slide.type === "photo") {
 
-            heroVideo.hidden = true;
-            heroImage.hidden = false;
+// =================================
+// UPDATE CAROUSEL POSITIONS
+// =================================
 
-            heroImage.src = slide.file;
+function updateCarousel() {
+
+    cards.forEach(function(card, index) {
+
+        let position = index - currentSlide;
+
+        // Make the carousel loop continuously
+
+        if (position > slides.length / 2) {
+            position -= slides.length;
+        }
+
+        if (position < -slides.length / 2) {
+            position += slides.length;
+        }
+
+        // Assign card position
+
+        if (Math.abs(position) <= 2) {
+
+            card.element.dataset.position = position;
+
+        } else {
+
+            card.element.dataset.position = "hidden";
 
         }
 
-        // Display video
+        // Only play the featured video
 
-        if (slide.type === "video") {
+        if (card.media.tagName === "VIDEO") {
 
-            heroImage.hidden = true;
-            heroVideo.hidden = false;
+            if (position === 0) {
 
-            heroVideo.src = slide.file;
-            heroVideo.load();
+                card.media.play().catch(function() {
+                    console.log("Video playback was prevented.");
+                });
 
-            heroVideo.play().catch(function(error) {
-                console.log("Video playback was prevented.");
-            });
+            } else {
+
+                card.media.pause();
+
+            }
 
         }
 
-        // Update text
+    });
 
-        heroTitle.textContent = slide.title;
+    // Update featured project information
 
-        heroDescription.textContent = slide.description;
+    const activeSlide = slides[currentSlide];
 
-        // Update counter
+    heroTitle.textContent = activeSlide.title;
 
-        counter.textContent =
-            String(index + 1).padStart(2, "0") +
-            " / " +
-            String(slides.length).padStart(2, "0");
+    heroDescription.textContent = activeSlide.description;
 
-        // Reveal new slide
+    // Update slide counter
 
-        requestAnimationFrame(function() {
-            hero.classList.remove("is-changing");
-        });
-
-    }, animate ? 350 : 0);
+    counter.textContent =
+        String(currentSlide + 1).padStart(2, "0") +
+        " / " +
+        String(slides.length).padStart(2, "0");
 
 }
 
@@ -165,7 +208,7 @@ function nextSlide() {
         currentSlide = 0;
     }
 
-    showSlide(currentSlide);
+    updateCarousel();
 
 }
 
@@ -182,7 +225,7 @@ function previousSlide() {
         currentSlide = slides.length - 1;
     }
 
-    showSlide(currentSlide);
+    updateCarousel();
 
 }
 
@@ -227,9 +270,28 @@ previousButton.addEventListener("click", function() {
 
 
 // =================================
+// CLICK SIDE CARDS TO FEATURE THEM
+// =================================
+
+cards.forEach(function(card, index) {
+
+    card.element.addEventListener("click", function() {
+
+        currentSlide = index;
+
+        updateCarousel();
+
+        startAutoplay();
+
+    });
+
+});
+
+
+// =================================
 // START HOMEPAGE
 // =================================
 
-showSlide(currentSlide, false);
+updateCarousel();
 
 startAutoplay();

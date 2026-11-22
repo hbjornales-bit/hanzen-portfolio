@@ -1,3 +1,47 @@
+/* =================================
+   PERSONAL COLOR PALETTE
+================================= */
+
+:root {
+    --midnight-blue: #12294E;
+    --burgundy: #62223B;
+    --dusty-mauve: #996378;
+    --muted-rose: #C99DAE;
+    --powder-blush: #F6D4D4;
+/* TYPOGRAPHY COLORS */
+--text-primary: #F6D4D4;
+--text-secondary: #FFFFFF;
+--text-muted: #C99DAE;
+--text-accent: #996378;
+--text-highlight: #FFFFFF;
+}
+}/* =================================
+   LOCAL FONTS
+================================= */
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('fonts/Ubuntu-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('fonts/Ubuntu-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Manrope';
+    src: url('fonts/Manrope-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
 
 /* =================================
    GENERAL SETTINGS
@@ -14,15 +58,45 @@ html {
 }
 
 body {
-    background: #ffffff;
-    font-family: Arial, sans-serif;
-    color: #222222;
+    background: var(--midnight-blue);
+    font-family: 'Manrope', sans-serif;
+    color: var(--text-secondary);
+}
+/* =================================
+   TYPOGRAPHY SYSTEM
+================================= */
+
+/* PRIMARY FONT — UBUNTU */
+
+h1, h2, h3, h4, h5, h6,
+.logo,
+.navigation,
+.main-nav,
+button,
+.cv-year,
+.counter {
+font-family: 'Ubuntu', sans-serif;
+font-size: 13px;
+}
+
+/* SECONDARY FONT — MANROPE */
+
+body,
+p,
+li,
+a,
+span,
+input,
+textarea,
+label {
+    font-family: 'Manrope', sans-serif;
 }
 
 
 /* =================================
    SIDEBAR
 ================================= */
+
 
 .sidebar {
     position: fixed;
@@ -34,10 +108,14 @@ body {
 
     padding: 42px 44px;
 
-    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    background: transparent;
     z-index: 10;
 }
-
 
 /* YOUR NAME */
 
@@ -46,7 +124,7 @@ body {
 
     color: #e9533d;
 
-    font-family: "Contane Condensed",
+    font-family: 'Ubuntu', sans-serif,
                  "Arial Narrow", sans-serif;
 
     font-size: 34px;
@@ -55,6 +133,11 @@ body {
 
     text-decoration: none;
     letter-spacing: -0.5px;
+
+    transition: color 0.4s ease;
+}
+.logo:hover {
+    color: #ffffff;
 }
 
 
@@ -134,12 +217,13 @@ body {
     stroke: none;
 }
 
-
 /* =================================
    MAIN LAYOUT
 ================================= */
 
 main {
+    width: 80.5%;
+    min-width: 0;
     margin-left: 19.5%;
 
     min-height: 100vh;
@@ -149,8 +233,6 @@ main {
 
     padding: 55px 38px 55px 0;
 }
-
-
 /* =================================
    HERO CAROUSEL
 ================================= */
@@ -159,6 +241,8 @@ main {
     position: relative;
 
     width: 100%;
+    max-width: 100%;
+min-width: 0;
 
     height: 72vh;
     min-height: 440px;
@@ -171,6 +255,8 @@ main {
     justify-content: center;
 
     background: #292929;
+    
+    box-shadow: 0 20px 50px rgba(40, 30, 25, 0.25);
 }
 
 
@@ -206,7 +292,12 @@ main {
 }
 
 .hero-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 100%;
     z-index: 2;
 
     color: white;
@@ -235,7 +326,7 @@ main {
 ================================= */
 
 .hero-content h1 {
-    font-family: Arial, sans-serif;
+    font-family: 'Ubuntu', sans-serif;
 
     font-size: clamp(25px, 2.3vw, 34px);
     font-weight: 400;
@@ -266,7 +357,7 @@ main {
 
     color: white;
 
-    font-family: Georgia, serif;
+    font-family: 'Ubuntu', sans-serif
     font-size: 13px;
     letter-spacing: 2px;
 
@@ -349,15 +440,6 @@ main {
 
 @media (max-width: 768px) {
 
-    .sidebar {
-        position: relative;
-
-        width: 100%;
-        height: auto;
-
-        padding: 24px;
-    }
-
     .logo {
         font-size: 29px;
     }
@@ -375,6 +457,7 @@ main {
     }
 
     main {
+        width: 100%;
         margin-left: 0;
 
         min-height: auto;
@@ -383,6 +466,7 @@ main {
     }
 
     .hero {
+        width: 100%;
         height: 72vh;
         min-height: 420px;
     }
@@ -414,7 +498,6 @@ main {
     }
 
 }
-
 
 /* RESPECT REDUCED MOTION */
 
@@ -829,7 +912,7 @@ main {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 55px;
 
-    border-top: 1px solid #dedad5;
+    border-top: 1px solid #000000;
     padding-top: 35px;
 }
 
@@ -876,7 +959,7 @@ main {
 }
 
 .cv-section:nth-of-type(n+4) {
-    border-top: 1px solid #dedad5;
+    border-top: 1px solid #000000;
 }
 
 .cv-section h2 {
@@ -920,7 +1003,7 @@ main {
 }
 
 .cv-note {
-    font-size: 13px !important;
+    font-size: 16px !important;
     color: #88817b !important;
     margin-top: 5px !important;
 }
@@ -942,7 +1025,9 @@ main {
     color: #55504c;
     margin-bottom: 6px;
 }
-
+.cv-page .cv-note {
+    color: #F6D4D4 !important;
+}
 .recognition-entry,
 .skills-group {
     margin-bottom: 22px;
@@ -1035,4 +1120,1185 @@ main {
 
 .bio-text p {
     margin-bottom: 22px;
+}
+
+/* =====================================
+   ANIMATED MESH GRADIENT BACKGROUND
+===================================== */
+/* =====================================
+   DARK-DOMINANT ANIMATED MESH GRADIENT
+===================================== */
+
+body {
+    background-color: var(--midnight-blue);
+
+    background-image:
+        radial-gradient(
+            ellipse at 15% 20%,
+            #62223B 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 85% 15%,
+            #996378 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 55% 75%,
+            #C99DAE 0%,
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 90% 90%,
+            #F6D4D4 0%,
+            transparent 40%
+        ),
+        radial-gradient(
+            ellipse at 10% 90%,
+            #62223B 0%,
+            transparent 45%
+        );
+
+    background-size: 200% 200%;
+    background-attachment: fixed;
+    animation: meshMovement 24s ease-in-out infinite alternate;
+}
+
+@keyframes meshMovement {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 30%; }
+    50% { background-position: 70% 100%; }
+    75% { background-position: 0% 70%; }
+    100% { background-position: 100% 0%; }
+}
+
+.sidebar,
+.cv-page,
+.contact-page {
+    background: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    body {
+        animation: none;
+    }
+}
+
+/* =====================================
+   PAGE FADE-IN ANIMATION
+===================================== */
+
+@keyframes pageFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main,
+.inner-page,
+.bio-page,
+.cv-page,
+.contact-page,
+.about-page {
+    animation: pageFadeIn 0.9s ease-out both;
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+    main,
+    .inner-page,
+    .bio-page,
+    .cv-page,
+    .contact-page,
+    .about-page {
+        animation: none;
+    }
+}
+
+/* =================================
+   ABOUT DROPDOWN — CLEAN NAVIGATION
+================================= */
+
+.about-dropdown {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.about-dropdown summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+    color: #333333;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.about-dropdown summary::-webkit-details-marker {
+    display: none;
+}
+
+.about-dropdown summary::marker {
+    content: "";
+}
+
+.about-submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+    padding-left: 12px;
+    margin-top: 3px;
+}
+
+.about-submenu a {
+    display: block;
+    width: fit-content;
+    color: #777777;
+    font-size: 13px;
+    text-decoration: none;
+    letter-spacing: 0.2px;
+    transition: color 0.3s ease;
+}
+
+.about-submenu a:hover {
+    color: #e9533d;
+}
+
+/* =================================
+   SERVICES PAGE
+================================= */
+
+.services-page {
+    width: 80.5%;
+    margin-left: 19.5%;
+    padding: 75px 7%;
+}
+
+.services-content {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.services-heading {
+    margin-bottom: 40px;
+}
+
+.services-heading h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.services-feature {
+    width: 100%;
+    margin-bottom: 75px;
+}
+
+.services-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    background: #111111;
+}
+
+.video-caption {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-top: 13px;
+}
+
+.video-caption span {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.video-caption p {
+    max-width: 400px;
+    font-size: 12px;
+    color: #777777;
+    text-align: right;
+    line-height: 1.6;
+}
+
+
+/* SERVICES GRID */
+
+.services-offerings {
+    margin-top: 30px;
+}
+
+.services-section-heading {
+    margin-bottom: 35px;
+}
+
+.services-section-heading h2 {
+    font-size: 35px;
+    font-weight: 600;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 35px;
+}
+
+.service-column {
+    border-top: 1px solid #000000;
+    padding-top: 20px;
+}
+
+.service-number {
+    display: block;
+    font-size: 12px;
+    color: #e9533d;
+    margin-bottom: 24px;
+}
+
+.service-column h3 {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.service-description {
+    color: #777777;
+    font-size: 13px;
+    line-height: 1.7;
+    min-height: 88px;
+    margin-bottom: 20px;
+}
+
+.service-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-column li {
+    font-size: 13px;
+    line-height: 1.7;
+    margin-bottom: 9px;
+}
+
+
+/* CONTACT PROMPT */
+
+.services-contact {
+    margin-top: 85px;
+    padding-top: 25px;
+    border-top: 1px solid #000000;
+}
+
+.services-contact p {
+    font-size: 14px;
+    margin-bottom: 12px;
+}
+
+.services-contact a {
+    color: #e9533d;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.services-contact a:hover {
+    opacity: 0.6;
+}
+
+
+/* SERVICES MOBILE LAYOUT */
+
+@media (max-width: 768px) {
+
+    .services-page {
+        width: 100%;
+        margin-left: 0;
+        padding: 45px 20px;
+    }
+
+    .services-heading h1 {
+        font-size: 36px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .service-description {
+        min-height: auto;
+    }
+
+    .video-caption {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .video-caption p {
+        text-align: left;
+    }
+
+    .services-feature {
+        margin-bottom: 55px;
+    }
+
+}
+/* SERVICES HEADINGS */
+
+.services-heading {
+    margin-bottom: 35px;
+}
+
+.services-heading h1 {
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.services-section-heading {
+    margin-bottom: 30px;
+}
+
+.services-section-heading p {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+/* CONTACT PAGE TYPOGRAPHY */
+
+.contact-content h1,
+.contact-page h1 {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.contact-content p,
+.contact-page p,
+.contact-page label,
+.contact-page input,
+.contact-page textarea,
+.contact-details,
+.contact-details a {
+    font-family: 'Manrope', sans-serif;
+}
+
+.contact-page button {
+    font-family: 'Ubuntu', sans-serif;
+}
+/* SERVICES PAGE — TYPOGRAPHY SIZE */
+
+.services-section-heading p {
+    font-size: 16px;
+    letter-spacing: 1.2px;
+}
+
+.service-column h3 {
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.service-number {
+    font-size: 14px;
+}
+
+.service-description {
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.service-column li {
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.services-contact {
+    font-size: 17px;
+}
+/* =====================================
+   NEW COLOR SYSTEM — TYPOGRAPHY
+===================================== */
+
+/* GENERAL TEXT */
+
+body {
+    color: var(--text-secondary);
+}
+
+/* MAIN HEADINGS */
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+}
+
+/* PARAGRAPHS AND DESCRIPTIONS */
+
+p, li {
+    color: var(--text-secondary);
+}
+
+/* LINKS */
+
+a {
+    color: var(--text-secondary);
+}
+
+a:hover {
+    color: var(--text-highlight);
+}
+
+
+/* =====================================
+   SIDEBAR
+===================================== */
+
+.sidebar {
+    background: transparent;
+}
+
+.logo {
+    color: var(--text-primary);
+}
+
+.logo:hover {
+    color: var(--text-highlight);
+}
+
+.navigation a,
+.about-dropdown summary {
+    color: var(--text-secondary);
+}
+
+.navigation a:hover,
+.about-submenu a:hover {
+    color: var(--text-highlight);
+}
+
+.about-submenu a,
+.sub-navigation a {
+    color: var(--muted-rose);
+}
+
+.socials a {
+    color: var(--text-primary);
+}
+
+
+/* =====================================
+   INNER PAGES
+===================================== */
+
+.eyebrow {
+    color: var(--muted-rose);
+}
+
+.page-intro,
+.about-text {
+    color: var(--text-secondary);
+}
+
+
+/* =====================================
+   BIO PAGE
+===================================== */
+
+.bio-content h1 {
+    color: var(--text-primary);
+}
+
+.bio-content p {
+    color: var(--text-secondary);
+}
+
+
+/* =====================================
+   CV PAGE
+===================================== */
+
+.cv-page {
+    color: var(--text-secondary);
+    background: transparent;
+}
+
+.cv-section h2,
+.cv-entry h3,
+.film-credit h3,
+.recognition-entry h3,
+.skills-group h3 {
+    color: var(--text-primary);
+}
+
+.cv-entry p,
+.film-credit p,
+.recognition-entry p,
+.skills-group p,
+.cv-details li,
+.leadership-roles li {
+    color: var(--text-secondary);
+}
+
+.cv-year,
+.cv-note,
+.leadership-roles li span:last-child {
+    color: var(--muted-rose);
+}
+
+.cv-section {
+    border-color: var(--muted-rose);
+}
+
+
+/* =====================================
+   CONTACT PAGE
+===================================== */
+
+.contact-page {
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.contact-content h1 {
+    color: var(--text-primary);
+}
+
+.contact-page p,
+.contact-page label,
+.contact-details,
+.contact-details a {
+    color: var(--text-secondary);
+}
+
+.contact-form input,
+.contact-form textarea {
+    color: var(--text-primary);
+    border-bottom-color: var(--muted-rose);
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: var(--muted-rose);
+}
+
+.contact-form button {
+    color: var(--text-primary);
+}
+
+
+/* =====================================
+   SERVICES PAGE
+===================================== */
+
+.services-heading h1,
+.services-section-heading p {
+    color: var(--text-primary);
+}
+
+.service-column {
+    border-top-color: var(--muted-rose);
+}
+
+.service-number,
+.services-contact a {
+    color: var(--powder-blush);
+}
+
+.service-column h3 {
+    color: var(--text-primary);
+}
+
+.service-description,
+.service-column li,
+.video-caption p {
+    color: var(--text-secondary);
+}
+
+.services-contact {
+    border-top-color: var(--muted-rose);
+}
+
+.services-contact p {
+    color: var(--text-secondary);
+}
+/* =====================================
+   CV PAGE — REFINED GLASSMORPHISM
+===================================== */
+
+.cv-page {
+    /* Glass surface */
+    background: rgba(18, 41, 78, 0.28) !important;
+
+    /* Frosted glass */
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
+
+    /* Glass edges */
+    border: 1px solid rgba(246, 212, 212, 0.25);
+    border-radius: 24px;
+
+    /* Inset from the top and bottom */
+    margin-top: 28px;
+    margin-bottom: 28px;
+    min-height: auto !important;
+
+    /* Subtle reflections and depth */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.20),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+
+    color: var(--text-secondary);
+}
+
+/* CV HEADINGS */
+
+.cv-page h1,
+.cv-page h2,
+.cv-page h3,
+.cv-page h4 {
+    color: var(--text-primary);
+}
+
+/* CV BODY TEXT */
+
+.cv-page p,
+.cv-page li {
+    color: var(--text-secondary);
+}
+
+/* YEARS AND DETAILS */
+
+.cv-page .cv-year,
+.cv-page .cv-note,
+.cv-page .leadership-roles li span:last-child {
+    color: var(--muted-rose);
+}
+
+/* SECTION DIVIDERS */
+
+.cv-page .cv-section {
+    border-top-color: rgba(201, 157, 174, 0.35);
+}
+
+
+/* CV HEADINGS */
+
+.cv-page h1,
+.cv-page h2,
+.cv-page h3,
+.cv-page h4 {
+    color: var(--text-primary);
+}
+
+/* CV BODY TEXT */
+
+.cv-page p,
+.cv-page li {
+    color: var(--text-secondary);
+}
+
+/* YEARS AND SMALL DETAILS */
+
+.cv-page .cv-year,
+.cv-page .cv-note,
+.cv-page .leadership-roles li span:last-child {
+    color: var(--muted-rose);
+}
+
+/* SECTION DIVIDERS */
+
+.cv-page .cv-section {
+    border-top-color: rgba(201, 157, 174, 0.45);
+}
+
+.cv-page > .cv-section:nth-of-type(3) {
+    border-top-color: rgba(201, 157, 174, 0.45);
+}
+/* =====================================
+   CV GLASS PANEL — SIDE ALIGNMENT
+===================================== */
+
+.cv-page {
+    /* Equal spacing on both sides */
+    margin-left: calc(19.5% + 28px);
+    margin-right: 28px;
+
+    /* Emphasized vertical glass edges */
+    border-left: 1px solid rgba(246, 212, 212, 0.40);
+    border-right: 1px solid rgba(246, 212, 212, 0.40);
+}
+
+/* Responsive spacing */
+@media (max-width: 900px) {
+    .cv-page {
+        margin-left: 12px;
+        margin-right: 12px;
+    }
+}
+
+/* =================================
+   SERVICES GLASS PANEL
+================================= */
+
+.services-page .services-glass-panel {
+    display: block;
+    width: 100%;
+    position: relative;
+
+    background: rgba(18, 41, 78, 0.12) !important;
+
+    backdrop-filter: blur(35px) saturate(180%);
+    -webkit-backdrop-filter: blur(35px) saturate(180%);
+
+    border: 1px solid rgba(246, 212, 212, 0.38);
+    border-radius: 24px;
+
+    margin: 28px 0;
+    padding: 42px 38px;
+
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        inset 0 1px 2px rgba(255, 255, 255, 0.25),
+        inset 0 -1px 2px rgba(255, 255, 255, 0.08);
+}
+
+.services-page .services-glass-panel .service-column {
+    border-top-color: rgba(201, 157, 174, 0.45);
+}
+
+.services-page .services-glass-panel .services-contact {
+    border-top-color: rgba(201, 157, 174, 0.45);
+}
+
+@media (max-width: 768px) {
+    .services-page .services-glass-panel {
+        padding: 28px 22px;
+        margin: 20px 0;
+        border-radius: 18px;
+    }
+}
+
+/* =================================
+   WORKS NESTED DROPDOWN
+================================= */
+
+.works-dropdown > .about-submenu {
+    gap: 16px;
+}
+
+.works-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.works-group > summary {
+    display: block;
+    list-style: none;
+    cursor: pointer;
+    color: var(--muted-rose);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+}
+
+.works-group > summary::-webkit-details-marker {
+    display: none;
+}
+
+.works-group > summary::marker {
+    content: "";
+}
+
+.works-group > .works-submenu {
+    padding-left: 12px;
+    margin-top: 0;
+    gap: 10px;
+}
+
+/* =====================================
+   3D COVERFLOW HOMEPAGE CAROUSEL
+===================================== */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    perspective: 1400px;
+    background: transparent;
+}
+
+/* CAROUSEL STAGE */
+
+.coverflow-stage {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    perspective: 1400px;
+    transform-style: preserve-3d;
+}
+
+/* INDIVIDUAL PROJECT CARDS */
+
+.coverflow-card {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+
+    width: 58%;
+    height: 68%;
+
+    border: 1px solid rgba(246, 212, 212, 0.35);
+    border-radius: 12px;
+    overflow: hidden;
+
+    background: var(--midnight-blue);
+
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        transform 0.7s ease,
+        opacity 0.7s ease,
+        filter 0.7s ease;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+/* CARD MEDIA */
+
+.coverflow-card img,
+.coverflow-card video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* CENTER CARD */
+
+.coverflow-card[data-position="0"] {
+    opacity: 1;
+    visibility: visible;
+    z-index: 5;
+
+    transform:
+        translate(-50%, -50%)
+        translateZ(100px)
+        scale(1);
+
+    filter: brightness(1);
+}
+
+/* LEFT AND RIGHT CARDS */
+
+.coverflow-card[data-position="-1"] {
+    opacity: 0.85;
+    visibility: visible;
+    z-index: 4;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(-82%)
+        rotateY(24deg)
+        translateZ(-100px)
+        scale(0.78);
+
+    filter: brightness(0.65);
+}
+
+.coverflow-card[data-position="1"] {
+    opacity: 0.85;
+    visibility: visible;
+    z-index: 4;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(82%)
+        rotateY(-24deg)
+        translateZ(-100px)
+        scale(0.78);
+
+    filter: brightness(0.65);
+}
+
+/* OUTER CARDS */
+
+.coverflow-card[data-position="-2"] {
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 3;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(-145%)
+        rotateY(35deg)
+        translateZ(-250px)
+        scale(0.58);
+
+    filter: brightness(0.4);
+}
+
+.coverflow-card[data-position="2"] {
+    opacity: 0.5;
+    visibility: visible;
+    z-index: 3;
+
+    transform:
+        translate(-50%, -50%)
+        translateX(145%)
+        rotateY(-35deg)
+        translateZ(-250px)
+        scale(0.58);
+
+    filter: brightness(0.4);
+}
+
+/* HIDE CARDS FARTHER AWAY */
+
+.coverflow-card[data-position="hidden"] {
+    opacity: 0;
+    visibility: hidden;
+    z-index: 0;
+}
+
+/* OVERLAY */
+
+.hero .overlay {
+    background: transparent;
+    pointer-events: none;
+    z-index: 6;
+}
+
+/* FEATURED PROJECT TEXT */
+
+.hero-content {
+    top: auto;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    width: 90%;
+    z-index: 7;
+
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+}
+
+.hero-content h1 {
+    color: var(--powder-blush);
+}
+
+.hero-content p {
+    color: white;
+}
+
+/* SEE MORE BUTTON */
+
+.hero-content .see-more {
+    margin-top: 18px;
+    padding: 12px 30px;
+}
+
+/* COUNTER */
+
+.hero .counter {
+    z-index: 8;
+}
+
+/* NAVIGATION ARROWS */
+
+.hero .arrow {
+    z-index: 9;
+}
+
+/* MOBILE COVERFLOW */
+
+@media (max-width: 768px) {
+
+    .coverflow-card {
+        width: 72%;
+        height: 55%;
+        top: 40%;
+    }
+
+    .coverflow-card[data-position="-1"] {
+        transform:
+            translate(-50%, -50%)
+            translateX(-72%)
+            rotateY(18deg)
+            translateZ(-100px)
+            scale(0.72);
+    }
+
+    .coverflow-card[data-position="1"] {
+        transform:
+            translate(-50%, -50%)
+            translateX(72%)
+            rotateY(-18deg)
+            translateZ(-100px)
+            scale(0.72);
+    }
+
+    .coverflow-card[data-position="-2"],
+    .coverflow-card[data-position="2"] {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .hero-content {
+        bottom: 4%;
+    }
+
+    .hero-content h1 {
+        font-size: 22px;
+    }
+
+    .hero-content p {
+        font-size: 11px;
+    }
+
+    .hero-content .see-more {
+        margin-top: 12px;
+        padding: 10px 22px;
+    }
+
+}
+
+/* =================================
+   SIDEBAR BRAND GROUP
+================================= */
+
+/* LOGO */
+
+.sidebar .logo {
+    display: block;
+    width: calc(100% + 30px);
+    max-width: 300px;
+    height: 100px;
+
+    margin: 0 0 30px;
+    overflow: hidden;
+}
+
+.sidebar .logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    object-position: left center;
+
+    transition: filter 0.35s ease;
+}
+
+/* WHITE HOVER */
+
+.sidebar .logo:hover img {
+    filter: brightness(0) invert(1);
+}
+
+/* NAVIGATION */
+
+.sidebar .navigation {
+    margin-top: 0;
+    gap: 27px;
+}
+
+/* SOCIAL ICONS */
+
+.sidebar .socials {
+    margin-top: 50px;
+}
+/* =================================
+   SIDEBAR MENU INDENTATION
+================================= */
+
+.sidebar .navigation,
+.sidebar .socials {
+    margin-left: 18px;
+}
+
+/* =====================================
+   HOMEPAGE — CV-STYLE GLASS CAROUSEL
+===================================== */
+
+.hero {
+    /* Dark purplish glass surface */
+    background: rgba(18, 41, 78, 0.28) !important;
+
+    /* Frosted glass */
+    backdrop-filter: blur(32px) saturate(160%);
+    -webkit-backdrop-filter: blur(32px) saturate(160%);
+
+    /* Glass edges */
+    border: 1px solid rgba(246, 212, 212, 0.25);
+    border-radius: 24px;
+
+    /* Depth and subtle reflections */
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.20),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+
+    overflow: hidden;
+}
+
+/* =====================================
+   GLOBAL TOP & BOTTOM VIGNETTE
+===================================== */
+
+body {
+    position: relative;
+    isolation: isolate;
+}
+
+/* VIGNETTE OVERLAY */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(35, 12, 37, 0.55) 0%,
+        rgba(35, 12, 37, 0.20) 18%,
+        transparent 38%,
+        transparent 62%,
+        rgba(35, 12, 37, 0.20) 82%,
+        rgba(35, 12, 37, 0.60) 100%
+    );
+
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* KEEP PAGE CONTENT ABOVE THE VIGNETTE */
+
+body > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* KEEP SIDEBAR ABOVE PAGE CONTENT */
+
+.sidebar {
+    z-index: 10;
 }

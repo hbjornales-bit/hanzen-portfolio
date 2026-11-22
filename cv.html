@@ -12,28 +12,57 @@
 
     <aside class="sidebar">
 
-        <a href="index.html" class="logo">
-            HANZEN<br>JORNALES
-        </a>
+<a href="index.html" class="logo">
+    <img src="images/logo.png" alt="Hanzen Jornales">
+</a>
 
-        <nav class="navigation">
+ 
+<nav class="navigation">
 
-            <a href="works.html" class="main-nav">WORKS</a>
+    <details class="about-dropdown works-dropdown">
+        <summary class="main-nav">WORKS</summary>
 
-            <a href="services.html">SERVICES</a>
+        <div class="about-submenu">
 
-            <div class="nav-group">
-                <a href="bio.html" class="main-nav active">ABOUT</a>
-
-                <div class="sub-navigation">
-                    <a href="bio.html">BIO</a>
-                    <a href="cv.html" class="sub-active">CV</a>
+            <details class="works-group">
+                <summary>VIDEO PRODUCTION</summary>
+                <div class="about-submenu works-submenu">
+                    <a href="works.html#film">FILM</a>
+                    <a href="works.html#documentary">DOCUMENTARY</a>
+                    <a href="works.html#behind-the-scenes">BEHIND THE SCENES</a>
                 </div>
-            </div>
+            </details>
 
-            <a href="contact.html">CONTACT</a>
+            <details class="works-group">
+                <summary>PHOTOGRAPHY</summary>
+                <div class="about-submenu works-submenu">
+                    <a href="works.html#people">PEOPLE</a>
+                    <a href="works.html#street">STREET</a>
+                    <a href="works.html#creative-editing">CREATIVE EDITING</a>
+                </div>
+            </details>
 
-        </nav>
+            <a href="works.html#research-engagements">
+                RESEARCH &amp; ENGAGEMENTS
+            </a>
+
+        </div>
+    </details>
+
+    <a href="services.html">SERVICES</a>
+
+    <details class="about-dropdown">
+        <summary class="main-nav">ABOUT</summary>
+        <div class="about-submenu">
+            <a href="bio.html">BIO</a>
+            <a href="cv.html">CV</a>
+        </div>
+    </details>
+
+    <a href="contact.html">CONTACT</a>
+
+</nav>
+
 
         <div class="socials">
             <a href="#" aria-label="Instagram">◎</a>
