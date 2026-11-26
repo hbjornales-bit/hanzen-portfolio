@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hanzen Jornales</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="intro-page">
+
+<main class="intro-screen">
+
+    <!-- FULLSCREEN DEMO REEL -->
+    <video class="intro-video" autoplay muted loop playsinline>
+        <source src="images/demoreel.mp4" type="video/mp4">
+    </video>
+
+    <!-- CINEMATIC OVERLAY -->
+    <div class="intro-overlay"></div>
+
+    <!-- WORDMARK -->
+<a href="index.html" class="intro-wordmark" id="introWordmark" aria-label="Enter portfolio">
+    <img src="images/wordmark.gif" alt="Hanzen Jornales">
+</a>
+
+<script src="script.js" defer></script>
+<script>
+    const mark = document.getElementById('introWordmark');
+
+    mark.addEventListener('click', e => {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;   // keep "open in new tab" working
+        e.preventDefault();
+        try { sessionStorage.setItem('introEnter', '1'); } catch (_) {}
+        document.body.classList.add('is-leaving');
+        setTimeout(() => { location.href = mark.href; }, 520);
+    });
+
+    // coming back with the browser's back button: undo the fade-out
+    addEventListener('pageshow', e => {
+        if (e.persisted) document.body.classList.remove('is-leaving');
+    });
+</script>
+</body>
+</main>
+
+
+

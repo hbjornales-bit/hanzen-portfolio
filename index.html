@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,82 +6,252 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Hanzen Jornales | Portfolio</title>
+    <script>
+    try {
+        if (sessionStorage.getItem('introEnter')) {
+            document.documentElement.classList.add('from-intro');
+            sessionStorage.removeItem('introEnter');
+        }
+    } catch (e) {}
+</script>
 
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/monogram.png">
 </head>
 
-<body>
+<body class="homepage-entering">
+    <div class="intro-handoff" aria-hidden="true">
+    <div class="intro-handoff-veil"></div>
+    <img class="intro-handoff-mark" src="images/wordmark.gif" alt="">
+</div>
 
-    <!-- LEFT SIDEBAR -->
+<header class="site-header">
 
-    <aside class="sidebar">
-
-
-<a href="index.html" class="logo">
+<a href="intro.html" class="logo">
     <img src="images/logo.png" alt="Hanzen Jornales">
 </a>
+    <div class="header-right">
 
-<nav class="navigation">
+        <nav class="navigation">
 
-    
-<details class="about-dropdown works-dropdown">
+            <details class="about-dropdown works-dropdown">
+                <summary class="main-nav">WORKS</summary>
 
-    <summary class="main-nav">WORKS</summary>
+                <div class="about-submenu">
 
-    <div class="about-submenu">
+                    <details class="works-group">
+                        <summary>VIDEO PRODUCTION</summary>
+                        <div class="about-submenu works-submenu">
+                            <a href="works.html#film">FILM</a>
+                            <a href="works.html#documentary">DOCUMENTARY</a>
+                            <a href="works.html#behind-the-scenes">BEHIND THE SCENES</a>
+                        </div>
+                    </details>
 
-        <!-- VIDEO PRODUCTION -->
-        <details class="works-group">
-            <summary>VIDEO PRODUCTION</summary>
+                    <details class="works-group">
+                        <summary>PHOTOGRAPHY</summary>
+                        <div class="about-submenu works-submenu">
+                            <a href="works.html#people">PEOPLE</a>
+                            <a href="works.html#street">STREET</a>
+                            <a href="works.html#creative-editing">CREATIVE EDITING</a>
+                        </div>
+                    </details>
 
-            <div class="about-submenu works-submenu">
-                <a href="works.html#film">FILM</a>
-                <a href="works.html#documentary">DOCUMENTARY</a>
-                <a href="works.html#behind-the-scenes">BEHIND THE SCENES</a>
-            </div>
-        </details>
+                    <a href="works.html#research-engagements">RESEARCH &amp; ENGAGEMENTS</a>
 
-        <!-- PHOTOGRAPHY -->
-        <details class="works-group">
-            <summary>PHOTOGRAPHY</summary>
+                </div>
+            </details>
 
-            <div class="about-submenu works-submenu">
-                <a href="works.html#people">PEOPLE</a>
-                <a href="works.html#street">STREET</a>
-                <a href="works.html#creative-editing">CREATIVE EDITING</a>
-            </div>
-        </details>
+            <a href="services.html">SERVICES</a>
 
-        <!-- RESEARCH -->
-        <a href="works.html#research-engagements">
-            RESEARCH &amp; ENGAGEMENTS
-        </a>
+            <details class="about-dropdown">
+                <summary class="main-nav">ABOUT</summary>
+                <div class="about-submenu">
+                    <a href="bio.html">BIO</a>
+                    <a href="cv.html">CV</a>
+                </div>
+            </details>
+
+            <a href="contact.html">CONTACT</a>
+
+        </nav>
 
     </div>
 
-</details>
+</header>
 
+<main class="reel-main">
 
-    <a href="services.html">SERVICES</a>
+    <div class="reel-stage" aria-label="Featured projects">
 
-    <details class="about-dropdown">
+        <!-- 3D RING: every .reel-slide becomes one face of the ring.
+             Add or remove slides freely; the script adapts to the count. -->
+        <div class="reel-track">
 
-        <summary class="main-nav">ABOUT</summary>
+            <!-- SLIDE 1 (image) -->
+            <article class="reel-slide" id="reel-01">
+                <img class="reel-media" src="images/hero-1.jpg" alt="Featured project 1" draggable="false">
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2024</strong><span>Official<br>Selection</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2024 · Competition / Festival</span>
+                        <h2>Project One</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Documentary</span></div>
+                            <div><span>Role</span><span>Director</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#documentary"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
 
-        <div class="about-submenu">
-            <a href="bio.html">BIO</a>
-            <a href="cv.html">CV</a>
+            <!-- SLIDE 2 (video) -->
+            <article class="reel-slide" id="reel-02">
+                <video class="reel-media" muted loop playsinline preload="metadata">
+                    <source src="images/hero-2.mp4" type="video/mp4">
+                </video>
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2024</strong><span>Official<br>Selection</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2024 · Competition / Festival</span>
+                        <h2>Project Two</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Film</span></div>
+                            <div><span>Role</span><span>Editor</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#film"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
+
+            <!-- SLIDE 3 (image) -->
+            <article class="reel-slide" id="reel-03">
+                <img class="reel-media" src="images/hero-3.jpg" alt="Featured project 3" draggable="false">
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2023</strong><span>Jury<br>Prize</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2023 · Competition / Festival</span>
+                        <h2>Project Three</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Photography</span></div>
+                            <div><span>Role</span><span>Photographer</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#people"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
+
+            <!-- SLIDE 4 (video) -->
+            <article class="reel-slide" id="reel-04">
+                <video class="reel-media" muted loop playsinline preload="metadata">
+                    <source src="images/hero-4.mp4" type="video/mp4">
+                </video>
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2023</strong><span>Official<br>Selection</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2023 · Competition / Festival</span>
+                        <h2>Project Four</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Behind the Scenes</span></div>
+                            <div><span>Role</span><span>Cinematographer</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#behind-the-scenes"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
+
+            <!-- SLIDE 5 (image) -->
+            <article class="reel-slide" id="reel-05">
+                <img class="reel-media" src="images/hero-5.jpg" alt="Featured project 5" draggable="false">
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2022</strong><span>Midnight<br>Section</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2022 · Competition / Festival</span>
+                        <h2>Project Five</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Street</span></div>
+                            <div><span>Role</span><span>Photographer</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#street"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
+
+            <!-- SLIDE 6 (video) -->
+            <article class="reel-slide" id="reel-06">
+                <video class="reel-media" muted loop playsinline preload="metadata">
+                    <source src="images/hero-6.mp4" type="video/mp4">
+                </video>
+                <div class="reel-shade"></div>
+                <div class="reel-ui">
+                    <div class="reel-laurel"><strong>2022</strong><span>Closing<br>Night</span></div>
+                    <div class="reel-count"></div>
+                    <ul class="reel-acclaim">
+                        <li><span class="reel-stars">★★★★★</span><p>Your quote or tagline here</p></li>
+                        <li><span class="reel-stars">★★★★★</span><p>Another short line</p></li>
+                    </ul>
+                    <div class="reel-title">
+                        <span class="reel-kicker">2022 · Competition / Festival</span>
+                        <h2>Project Six</h2>
+                        <div class="reel-meta">
+                            <div><span>Genre</span><span>Short Film</span></div>
+                            <div><span>Role</span><span>Director</span></div>
+                        </div>
+                    </div>
+                    <button class="reel-scroll" type="button">Next</button>
+                    <a class="reel-explore" href="works.html#film"><span>Explore</span><i>→</i></a>
+                </div>
+            </article>
+
         </div>
+    </div>
 
-    </details>
+    <!-- SIDE CONTROLS: prev / pips / next (pips are generated by script.js) -->
+    <div class="reel-ctrl">
+        <button type="button" class="reel-prev" aria-label="Previous project">↑</button>
+        <div class="reel-pips"></div>
+        <button type="button" class="reel-next" aria-label="Next project">↓</button>
+    </div>
 
-    <a href="contact.html">CONTACT</a>
+</main>
 
-</nav>
-<!-- SOCIAL MEDIA ICONS -->
-
-<div class="socials">
+<!-- SOCIAL POP-UP (opens from the monogram) -->
+<div class="social-pop" id="socialPop">
 
     <a href="https://www.instagram.com/hanzenjornales/"
        target="_blank" rel="noopener noreferrer"
@@ -111,69 +280,12 @@
     </a>
 
 </div>
-</aside>
-<!-- FLOATING MONOGRAM -->
 
-<a href="#" class="floating-monogram" aria-label="Back to top">
-
+<button type="button" class="floating-monogram" aria-label="Connect with me"
+        aria-expanded="false" aria-controls="socialPop">
     <img src="images/monogram.png" alt="">
-
-    <span>BACK TO TOP</span>
-
-</a>
-<!-- HOMEPAGE -->
-
-<main>
-
-    <section class="hero" id="hero">
-
-        <!-- 3D CAROUSEL STAGE -->
-        <div class="coverflow-stage" id="coverflow-stage">
-        </div>
-
-        <!-- DARK OVERLAY -->
-        <div class="overlay"></div>
-
-        <!-- SLIDE NUMBER -->
-        <div class="counter" id="counter">
-            01 / 06
-        </div>
-
-        <!-- PREVIOUS -->
-        <button class="arrow previous" id="previous" aria-label="Previous slide">
-            &#10094;
-        </button>
-
-        <!-- FEATURED PROJECT TEXT -->
-        <div class="hero-content">
-
-            <h1 id="hero-title">
-                SELECTED WORKS
-            </h1>
-
-            <p id="hero-description">
-                Stories through cinema, visual language,
-                and creative practice.
-            </p>
-
-            <a href="works.html" class="see-more">
-                See More
-            </a>
-
-        </div>
-
-        <!-- NEXT -->
-        <button class="arrow next" id="next" aria-label="Next slide">
-            &#10095;
-        </button>
-
-    </section>
-
-    </main>
-
-    <!-- HOMEPAGE JAVASCRIPT -->
-    <script src="script.js"></script>
-
+    <span>CONNECT</span>
+</button>
+<script src="script.js" defer></script>
 </body>
-<!-- GitHub Pages redeployment -->
 </html>
